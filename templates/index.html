@@ -1,6 +1,144 @@
-{% extends "base.html" %}
-{% block content %}
-    <div class="bg-light p-5">
-        <h1>Welcome to the Video Game API!</h1>
+{% extends "base.html" %} {% block content %}
+<div class="bg-light p-5">
+    <h1>Welcome to the Video Game API! 🎮</h1>
+    <h2>What is this?</h2>
+    <p>
+        This is the Video Game API. A small project developed by
+        <a href="https://joshblewitt.dev/">Joshua Blewitt</a>. This API allows
+        authenticated users to get, add and delete video games to a database.
+    </p>
+    <p>The API is free to use!</p>
+    <p>If you want to see the repo and take a look at the code, click <a
+            href="https://gitlab.com/JoshBl_/python-flask-api">here</a></p>
+    <p>The repo also includes a Postman JSON file of example calls to the API.</p>
+    <div class="alert alert-danger" role="alert">
+        <strong>PLEASE NOTE: This is a project designed for myself to practice my
+            development skills, please DO NOT add any sensitive or personal
+            information!</strong>
     </div>
+    <h2>How was this made?</h2>
+    <p>The API was developed by using the following</p>
+    <strong>Backend</strong>
+    <ul>
+        <li>Python</li>
+        <ul>
+            <li>Flask framework</li>
+            <li>Flask JWT Extended</li>
+            <li>Flask Restful</li>
+            <li>SQL Alchemy</li>
+        </ul>
+    </ul>
+    <strong>Frontend</strong>
+    <ul>
+        <li>Bootstrap</li>
+    </ul>
+    <h2>How to use the API</h2>
+
+    <h3>Authentication</h3>
+    <p>The API uses JWT for authentication. At the moment, there is no way to register for an account. There is a hard
+        coded credential to use to authenticate a session.</p>
+    <p>Please use the following JSON:</p>
+    <code>
+        {
+            "username": "Josh",
+            "password": "mypass"
+        }
+    </code>
+    <p>This can be used to access the <strong>/login</strong> endpoint</p>
+    <p>This will return an access token that can be used with the rest of the API</p>
+
+    <h3>Display games</h3>
+    <p>To display all games in the database, you will need to use the <strong>/displayGames</strong> endpoint. Submit a
+        GET request to this endpoint and you will see a list of all the games in the database.</p>
+    <p>Example response:</p>
+    <code>
+        {
+            "Games": [
+                {
+                    "Game": {
+                        "Genre: ": "Fighting",
+                        "ID: ": 1,
+                        "Name: ": "X-Men Vs Street Fighter",
+                        "Platform: ": "Sega Saturn",
+                        "Publisher: ": "Capcom",
+                        "Year": 1997
+                    }
+                },
+                {
+                    "Game": {
+                        "Genre: ": "Platformer",
+                        "ID: ": 2,
+                        "Name: ": "Super Mario 64",
+                        "Platform: ": "Nintendo 64",
+                        "Publisher: ": "Nintendo",
+                        "Year": 1996
+                    }
+                },
+                {
+                    "Game": {
+                        "Genre: ": "Racing",
+                        "ID: ": 3,
+                        "Name: ": "Wave Race 64",
+                        "Platform: ": "Nintendo 64",
+                        "Publisher: ": "Nintendo",
+                        "Year": 1996
+                    }
+                }
+            ]
+        }
+    </code>
+
+    <h3>Add game</h3>
+    <p>To add a game to the database, you will need to use the <strong>/addGame</strong> endpoint and submit a POST request.</p>
+    <p>The endpoint accepts JSON in the following structure:</p>
+    <code>
+        {
+            "name": "Wave Race 64",
+            "platform": "Nintendo 64",
+            "publisher": "Nintendo",
+            "genre": "Racing",
+            "year": 1996
+        }
+    </code>
+    <p></p>
+    <div class="alert alert-info" role="alert">
+        The API will check if the year provided is in an integer format and if the request has values that aren't null. The API will return a 400 status code if the request doesn't follow the format.
+    </div>
+
+    <h3>Delete a game</h3>
+    <p>To delete a game from the database, you will need to use the <strong>/deleteGame</strong> endpoint and submit a DELETE request.</p>
+    <p>The endpoint accepts JSON in the following structure:</p>
+    <code>
+        {
+            "id": 1
+        }
+    </code>
+
+    <h3>Find a game</h3>
+    <p>To find a game (or games), you will need to use the <strong>/findGame</strong> endpoint and submit a GET request.</p>
+    <p>The endpoint accepts JSON in the following structure:</p>
+    <code>
+        {
+            "name": "64"
+        }
+    </code>
+    <p></p>
+    <div class="alert alert-info" role="alert">
+        The API will return multiple results if the search query matches multiple game names with a status code of 200. Or a 404 status code if no results are found.
+    </div>
+    <h3>Update a game</h3>
+    <p>If you want to update a game, you will need to use the <strong>/updateGame</strong> endpoint and submit a PUT request.</p>
+    <p>The endpoint accepts JSON in the following structure:</p>
+    <code>
+        {
+            "id": 10,
+            "field": "name",
+            "value": "Wave Race: Blue Storm"
+        }
+    </code>
+    <p></p>
+    <div class="alert alert-info" role="alert">
+        The API will check to see if the field is valid. It will return a status code 200 if the request was successful or a status code 400 if the field entered was invalid. If no results are found a 404 status code will be returned.
+    </div>
+</div>
 {% endblock %}
