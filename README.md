@@ -87,6 +87,23 @@ To display all games in the database, you will need to use the <strong>/displayG
 }
 ```
 
+## Updating a game
+To update a game in the database, you will need to use the <strong>/updateGame</strong> endpoint and submit a PUT request. Example:
+```
+{
+    "id": 10,
+    "field": "name",
+    "value": "Wave Race: Blue Storm"
+}
+```
+
+The field parameter will accept one of the following:
+
+* name
+* platform
+* publisher
+* genre
+* year
 
 ## Tech Stack
 The following was used for this application:

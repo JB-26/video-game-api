@@ -9,7 +9,7 @@
     </p>
     <p>The API is free to use!</p>
     <p>If you want to see the repo and take a look at the code, click <a
-            href="https://gitlab.com/JoshBl_/python-flask-api">here</a></p>
+            href="https://gitlab.com/JoshBl_/python-flask-api">here.</a></p>
     <p>The repo also includes a Postman JSON file of example calls to the API.</p>
     <div class="alert alert-danger" role="alert">
         <strong>PLEASE NOTE: This is a project designed for myself to practice my
@@ -31,6 +31,9 @@
     <strong>Frontend</strong>
     <ul>
         <li>Bootstrap</li>
+        <ul>
+            <li>Uses jsDelivr CDN to include the compiled CSS and JS</li>
+        </ul>
     </ul>
     <h2>How to use the API</h2>
 
@@ -136,6 +139,14 @@
             "value": "Wave Race: Blue Storm"
         }
     </code>
+    <p>The field parameter will accept one of the following:</p>
+    <ul>
+        <li>name</li>
+        <li>platform</li>
+        <li>publisher</li>
+        <li>genre</li>
+        <li>year</li>
+    </ul>
     <p></p>
     <div class="alert alert-info" role="alert">
         The API will check to see if the field is valid. It will return a status code 200 if the request was successful or a status code 400 if the field entered was invalid. If no results are found a 404 status code will be returned.
