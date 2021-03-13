@@ -1,6 +1,6 @@
 ## Video Game API
 
-Welcome to the Video Game API! A free to use RESTful API that I created as a side project so I can practice Python and Flask. This API is publicly available and is hosted on Heroku. The project has it's own page (built with Flask), located here.
+Welcome to the Video Game API! A free to use RESTful API that I created as a side project so I can practice Python and Flask. This API is publicly available and is hosted on Heroku. The project has it's own page (built with Flask), located [here](https://mighty-cliffs-81365.herokuapp.com/).
 
 Feel free to clone this repo if you want to take a look at how this works!
 
@@ -104,6 +104,13 @@ The field parameter will accept one of the following:
 * publisher
 * genre
 * year
+
+## Finding a game
+To find a game (or games), you will need to use the <strong>/findGame</strong> endpoint and submit a GET request.
+
+The endpoint accepts JSON in the following structure:
+
+{ "name": "64" }
 
 ## Tech Stack
 The following was used for this application:
